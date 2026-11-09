@@ -26,12 +26,12 @@ class conexionDB{
     // Crea un punto de guardado intermedio dentro de la transacción actual.
     // Útil para poder deshacer solo una parte del proceso sin cancelar todo el pedido.
     //SVP es SavePoint
-    void crearSavepoint( string nombreSVP);
+    int crearSavepoint( string nombreSVP);
 
     // Deshace los cambios realizados únicamente hasta el punto de guardado indicado, 
     // manteniendo el resto de la transacción intacta y activa.
     //SVP es SavePoint
-    void rollbackASavepoint( string nombreSVP);
+    int rollbackASavepoint( string nombreSVP);
 
     private:
     SQLHENV entorno;
