@@ -49,7 +49,7 @@ void inicializar_tablas(SQLHDBC hdbc) {
                    "Cproducto NUMBER REFERENCES Stock(Cproducto), Cantidad NUMBER, "
                    "PRIMARY KEY (Cpedido, Cproducto))");
 
-    // Cambia estos valores por los del enunciado
+  
     for (int i = 1; i <= 10; i++) {
         string sql = "INSERT INTO Stock VALUES (" + to_string(i) + ", " + to_string(i * 10) + ")";
         ejecutar(hdbc, sql.c_str());
