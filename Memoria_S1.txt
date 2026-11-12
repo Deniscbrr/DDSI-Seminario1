@@ -1,0 +1,25 @@
+Memoria del Seminario 1 - Acceso a Bases de Datos (ODBC)Asignatura: Diseño y Desarrollo de Sistemas de Información (DDSI)
+
+1. Lenguaje utilizado y tecnología de acceso:
+El proyecto ha sido desarrollado íntegramente en el lenguaje C++. Para la comunicación con el Sistema Gestor de Bases de Datos (SGBD) Oracle, se ha empleado la API estándar nativa ODBC (Open DataBase Connectivity), haciendo uso de las librerías del sistema <sql.h> y <sqlext.h>.
+
+2. Entorno de conexión y configuración:
+La aplicación cliente se conecta al servidor de la Universidad de Granada. Los parámetros de red configurados en la cadena de conexión son los siguientes:
+
+Host: oracle0.ugr.es
+
+Puerto: 1521
+
+Servicio (DBQ): practbd
+Para garantizar el acceso seguro desde el exterior de la red del campus, la ejecución de la aplicación requiere tener activa la conexión VPN de la UGR. El entorno de ejecución gestiona la memoria de los manejadores ODBC (SQLHENV, SQLHDBC y SQLHSTMT) de forma segura.
+
+3. Reparto de tareas en el grupo
+El desarrollo del software se ha dividido modularmente entre los miembros del equipo:
+
+Denis: Implementación del motor de conexión conexionDB. Responsable de instanciar el Driver Manager ODBC, desactivar el modo Autocommit y desarrollar las funciones de control transaccional puro (Commit, Rollback total y gestión de Savepoints).
+
+Pablo: Desarrollo del módulo principal (main.cpp) y construcción del cascarón de la aplicación. Responsable de la interfaz principal de usuario interactiva y de la invocación orquestada del resto de módulos funcionales.
+
+Javi: Programación del módulo de inicialización y formateo (tablas.h/cpp). Responsable de la ejecución de sentencias DDL (borrado y creación de tablas), inserción de tuplas por defecto en la tabla Stock y creación de las funciones para extraer y mostrar por pantalla los ResultSet formateados.
+
+Sirall El Founti: Desarrollo de la lógica de negocio transaccional para la gestión de pedidos (pedidos.h/cpp). Responsable de implementar el submenú de ventas, orquestar las sentencias DML para la integridad entre cabeceras y detalles, vincular las opciones del usuario con los métodos de control transaccional (puntos de guardado y confirmaciones), y redacción de la memoria técnica.

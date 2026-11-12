@@ -33,6 +33,10 @@ class conexionDB{
     //SVP es SavePoint
     int rollbackASavepoint( string nombreSVP);
 
+    SQLHDBC getConexion() {
+        return conexion;
+    }
+
     private:
     SQLHENV entorno;
     SQLHDBC conexion;
