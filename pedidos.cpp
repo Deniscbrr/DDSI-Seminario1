@@ -12,13 +12,13 @@ static void ejecutarDML(SQLHDBC hdbc, const string& sql) {
     SQLHSTMT stmt;
     SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &stmt);
     SQLExecDirect(stmt, (SQLCHAR*)sql.c_str(), SQL_NTS);
-    SQLfreeHandle(SQL_HANDLE_STMT, stmt);
+    SQLFreeHandle(SQL_HANDLE_STMT, stmt);
 }
 
 void altaNuevoPedido(conexionDB* bd) {
     SQLHDBC hdbc = bd->getConexion();
 
-    int cpedido, cciente;
+    int cpedido, ccliente;
     string fecha;
 
     //Datos del pedido
@@ -26,7 +26,7 @@ void altaNuevoPedido(conexionDB* bd) {
     cout << "Codigo de pedido: ";
     cin >> cpedido;
     cout << "Codigo de cliente: ";
-    cin >> cciente;
+    cin >> ccliente;
     cout << "Fecha del pedido: ";
     cin >> ws;
     getline(cin, fecha);
@@ -63,11 +63,11 @@ void altaNuevoPedido(conexionDB* bd) {
             string sqlInsertDetalle = "INSERT INTO Detalle_Pedido (Cpedido, Cproducto, Cantidad) VALUES (" + 
                                       to_string(cpedido) + ", " + to_string(cproducto) + ", " + to_string(cantidad) + ")";
 
-            ejecutarDML(hdbc, sqlInserDetalle);
+            ejecutarDML(hdbc, sqlInsertDetalle);
 
             //Actualizamos restando el stock
-            string sqlUpadateStock = "UPDATE Stock SET Cantidad = Cantidad - " + to_string(cantidad) +
-                                     "WHERE Cproducto = " + to_string(cproducto);
+            string sqlUpdateStock = "UPDATE Stock SET Cantidad = Cantidad - " + to_string(cantidad) +
+                                     " WHERE Cproducto = " + to_string(cproducto);
                 
             ejecutarDML(hdbc, sqlUpdateStock);
 

@@ -1,5 +1,5 @@
 #ifndef PEDIDOS_H
-#define PEDIDSO_H
+#define PEDIDOS_H
 
 #include "conexion.h"
 

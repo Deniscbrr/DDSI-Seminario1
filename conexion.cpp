@@ -22,10 +22,11 @@ int conexionDB::conectarBD(string user, string passwd){
     
     if(salida == SQL_SUCCESS || salida == SQL_SUCCESS_WITH_INFO)
         return 0;
-    else
+    else {
         SQLFreeHandle(SQL_HANDLE_DBC, conexion); 
         SQLFreeHandle(SQL_HANDLE_ENV, entorno);
         return 1;
+    }
 }
 
 void conexionDB::desconectarBD(){
