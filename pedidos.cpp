@@ -56,7 +56,7 @@ void altaNuevoPedido(conexionDB* bd) {
             int cproducto, cantidad;
             cout << "Codigo del producto: ";
             cin >> cproducto;
-            cout << "cantidad solicitada; ";
+            cout << "cantidad solicitada: ";
             cin >> cantidad;
 
             //Insertamos el detalle en la base de datos
